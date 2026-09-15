@@ -98,7 +98,7 @@ System.out.println("Password length: " + plen);
        password=scanner.nextLine();
       
         plen = password.length(); 
-       
+       String wwe="";
    }     
         System.out.println("Password is valid"); ////
         Character ch;
