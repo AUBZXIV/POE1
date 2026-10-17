@@ -141,7 +141,8 @@ public class POE1 {
      
      
         System.out.println("Account has been succesfully created welcome on board!");      
-    
+        System.out.println("Please login into your account below");
+        
         
     
     
