@@ -141,7 +141,54 @@ public class POE1 {
      
      
         System.out.println("Account has been succesfully created welcome on board!");      
-        System.out.println("Please login into your account below");
+       
+Boolean bPasswrd = false;
+Boolean bUser = false;
+String Lpass;
+String Luser;
+
+System.out.println("Please login into your account below");
+System.out.println("Press Enter to continue");
+answer = scanner.nextLine();
+
+// Username login
+System.out.println("Please enter your Username");
+Luser = scanner.nextLine();
+
+while (!Luser.equals(username)) {
+    System.out.println("Username is invalid. Please re-enter:");
+    Luser = scanner.nextLine();
+}
+
+bUser = true;
+System.out.println("Username is valid!");
+
+// Password login
+System.out.println("Please enter your password");
+Lpass = scanner.nextLine();
+
+while (!Lpass.equals(password)) {
+    System.out.println("Password is incorrect. Please re-enter:");
+    Lpass = scanner.nextLine();
+}
+
+bPasswrd = true;
+System.out.println("Password is valid!");
+
+System.out.println("Login successful!");
+// MESSAGES
+        System.out.println("WELCOME TO QUICK CHAT");
+        System.out.println("");
+        
+        
+        
+        
+        
+      
+            
+          
+        
+        
         
         
     
