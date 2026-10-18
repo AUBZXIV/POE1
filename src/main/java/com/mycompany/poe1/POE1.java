@@ -4,6 +4,10 @@
 
 package com.mycompany.poe1;
 import java.util.Scanner;
+import java.util.Random;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author USER
@@ -12,7 +16,8 @@ public class POE1 {
 
     public static void main(String[] args) {
    Scanner scanner = new Scanner( System.in);
-        
+   Random random = new Random();
+      
    String username="";
    String under="_";
    int ulen=username.length();
@@ -176,9 +181,108 @@ bPasswrd = true;
 System.out.println("Password is valid!");
 
 System.out.println("Login successful!");
+        System.out.println("Press OK to continue");
+answer=scanner.nextLine();
 // MESSAGES
+
+
+
+String option =scanner.nextLine();
+
+while(!option.equals("3")){
         System.out.println("WELCOME TO QUICK CHAT");
-        System.out.println("");
+        System.out.println("Please select an option");
+        System.out.println("1) Send messages"
+                + "2) show recent messages"
+                + "3) Quit");
+       option=scanner.nextLine();
+        if(option.equals("1")) {
+            System.out.println("Sending messages has been selected");  
+        
+    }
+        
+        else if(option.equals("2")) {        
+          System.out.println("The show recent messages are coming soon!");  
+    }
+        else if(option.equals("3")) {        
+          System.out.println("Thank you for using quick chat, see you soon");
+    }
+      System.out.println("Application has been closed");
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+String option = "";
+
+System.out.println("WELCOME TO QUICK CHAT");
+
+while (!option.equals("3")) {
+
+    System.out.println("\nPlease select an option:");
+    System.out.println("1) Send messages");
+    System.out.println("2) Show recent messages");
+    System.out.println("3) Quit");
+
+    option = scanner.nextLine();
+
+    switch (option) {
+        case "1":
+            System.out.println("Send messages selected.");
+            // Add your send message code here
+            break;
+
+        case "2":
+            System.out.println("Coming Soon.");
+            break;
+
+        case "3":
+            System.out.println("Thank you for using Quick Chat.");
+            break;
+
+        default:
+            System.out.println("Invalid option. Please select 1, 2, or 3.");
+            break;
+    }
+}
+
+System.out.println("Application closed.");
+
+*/
+        
         
         
         
