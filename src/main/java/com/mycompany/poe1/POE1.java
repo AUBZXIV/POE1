@@ -203,7 +203,7 @@ while (!option.equals("3")) {
 
     if (option.equals("1")) {
         
-        // message id
+        // message id declartion
         String MessageID = "";
 
             for (int j = 0; j < 10; j++) {
@@ -213,7 +213,7 @@ while (!option.equals("3")) {
         
     String Message=scanner.nextLine();        
       Integer   numOfmsg=scanner.nextInt();    
-      // hash code
+      // hash code declaration
             String first2=MessageID.substring(0, 2);
 String colon=":";
 String FirstWord = Message.substring(0, Message.indexOf(" "));
@@ -235,13 +235,13 @@ HashCode=HashCode.toUpperCase();
 // no of messages
 System.out.println("How many messages do you want to send?");
         numOfmsg = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < numOfmsg; i++) {
+        for (int i = 0; i < numOfmsg; i++) { // for loop use with the messages and the no of messages the user wants to enter
           numOfmsg++;  
     
 
         
         
-        System.out.println("Press OK to continue");
+        System.out.println("Press OK to continue");// used to get to the next process
         answer=scanner.next();
         // recipient  
         System.out.println("Please enter recipient's cellphone number");
@@ -266,7 +266,7 @@ System.out.println("How many messages do you want to send?");
             System.out.println("Message format is invalid");
             System.out.println("Messages should not exceed 250 characters");
             Message=scanner.next();
-        }
+        } //options for the user to chose from
         System.out.println("What would you like to do with your message?(Please select an option below)");      
         System.out.println("1) Send message");
         System.out.println("2) Delete the message");
