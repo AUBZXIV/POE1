@@ -21,7 +21,7 @@ public class POE1 {
    String answer;
    
    String codesa="+27";
-    /*
+    
    String username="";
    String under="_";
    int ulen=username.length();
@@ -46,7 +46,7 @@ public class POE1 {
           System.out.println("(Press OK to continue)");
          answer=scanner.nextLine();
          
-         String codesa="+27";
+         
          String cellphone=scanner.nextLine();
          int lcell=cellphone.length();
          
@@ -184,197 +184,140 @@ while (!Lpass.equals(password)) {
 bPasswrd = true;
 System.out.println("Password is valid!");
 
-  */
+  
 System.out.println("Login successful!");
         System.out.println("Press OK to continue");
 
         answer=scanner.nextLine();
-
-
-
-//SELECTION OF OPTIONS
 String option =scanner.nextLine();
-
-while(!option.equals("3")){
-    
-        System.out.println("WELCOME TO QUICK CHAT");
-        System.out.println("Please select an option");
-        
-        System.out.println("1) Send messages");
-          System.out.println("2) Show recent messages");
-            System.out.println("3) Quit application");
-  //----------------------------------------------------------------------------------          
-           //Declarations for variables and string manipulation
-    // MessageID
-String MessageID = "";
-                for (int i = 0; i < 10; i++) {
-                   MessageID+= random.nextInt(10);
-                } 
-//-----------------------------------
-
-// num of messages sent
-
-Integer NumMsgSent=0; // increment for every message
-//-----
-//  Recipient 
-String Recipient=scanner.nextLine();
-Integer Lrecp=Recipient.length();  
-            
-            
-            
-            
-        
-            Integer MaxMessg=250;
-String Message=scanner.nextLine();
-Integer LenghtOfMsg=Message.length();
-Integer numOfmsg=scanner.nextInt();// number of messages the user wants to send
-        // DECLARATIONS
-       option=scanner.next();
-        if(option.equals("1")) {
-            System.out.println("Sending messages has been selected");
-            
-            System.out.println("How many messages do u want to send");
-            numOfmsg=scanner.nextInt();// stoped here getting somewhere
-            
-            System.out.println("Press OK to continue");
-            answer=scanner.next();
-            
-            System.out.println("Please enter the Recipients's cellphone number");
-            Recipient=scanner.next();
-            while (Recipient.isBlank()) {                
-                System.out.println("Please fill in recipients number*");
-                Recipient=scanner.next();
-            }
-            while (Lrecp>12||!Recipient.contains(codesa)) {                
-                
-                System.out.println("Cellphone format is INVALID!");
-            System.out.println("Cellphone should not be longer than 10 characters and should start with your country code");
-             System.out.println("Please re enter Recipient's cellphone number");  
-               Recipient=scanner.next();
-                
-            }
-            System.out.println("Recipient's number entered");
-            
-            
-            
-            
-            
-            
-                
-            
-            
-            
-            
-            
-}
-        
-    
-        
-        
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        if(option.equals("2")) {        
-          System.out.println("The show recent messages are coming soon!");  
-    
-        }
-        else if(option.equals("3")) { 
-            
-          System.out.println("Thank you for using quick chat, see you soon");
-          System.out.println("Application has been closed");
-    }
-      
-        
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-
-String option = "";
-
-System.out.println("WELCOME TO QUICK CHAT");
 
 while (!option.equals("3")) {
 
-    System.out.println("\nPlease select an option:");
+    System.out.println("\nWELCOME TO QUICK CHAT");
+    System.out.println("Please select an option");
     System.out.println("1) Send messages");
     System.out.println("2) Show recent messages");
-    System.out.println("3) Quit");
+    System.out.println("3) Quit application");
 
-    option = scanner.nextLine();
+    option = scanner.nextLine(); // Get the user's choice
 
-    switch (option) {
-        case "1":
-            System.out.println("Send messages selected.");
-            // Add your send message code here
-            break;
+    if (option.equals("1")) {
+        
+        // message id
+        String MessageID = "";
 
-        case "2":
-            System.out.println("Coming Soon.");
-            break;
+            for (int j = 0; j < 10; j++) {
+                MessageID += random.nextInt(10);
+            }
 
-        case "3":
-            System.out.println("Thank you for using Quick Chat.");
-            break;
+        
+    String Message=scanner.nextLine();        
+      Integer   numOfmsg=scanner.nextInt();    
+      // hash code
+            String first2=MessageID.substring(0, 2);
+String colon=":";
+String FirstWord = Message.substring(0, Message.indexOf(" "));
+String LastWord = Message.substring(Message.lastIndexOf(" ") + 1);
+String HashCode = first2.concat(colon).concat(String.valueOf(numOfmsg)).concat(colon).concat(FirstWord).concat(LastWord);
+HashCode=HashCode.toUpperCase();  
+            
+            
+            
+            
+            
+            
+            
 
-        default:
-            System.out.println("Invalid option. Please select 1, 2, or 3.");
-            break;
+        System.out.println("Send messages have been selected");
+        System.out.println("Press Ok to continue");
+        answer=scanner.next();
+ 
+// no of messages
+System.out.println("How many messages do you want to send?");
+        numOfmsg = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < numOfmsg; i++) {
+          numOfmsg++;  
+    
+
+        
+        
+        System.out.println("Press OK to continue");
+        answer=scanner.next();
+        // recipient  
+        System.out.println("Please enter recipient's cellphone number");
+            String Recipient = scanner.nextLine();
+
+            while (Recipient.isBlank()|| Recipient.length() > 12|| !Recipient.startsWith(codesa)) {
+            System.out.println("Invalid cellphone number!");
+                System.out.println("Please enter a valid number starting with "+ codesa);
+
+                Recipient = scanner.nextLine();
+            }
+
+            System.out.println("Recipient's number entered");
+            
+        System.out.println("Press ok to continue");
+        answer=scanner.next();
+       
+        System.out.println("Please enter your message");
+        System.out.println("----------TYPE BELOW----------:");
+        Message = scanner.nextLine();
+        while (Message.isBlank()||Message.length()>250) {            
+            System.out.println("Message format is invalid");
+            System.out.println("Messages should not exceed 250 characters");
+            Message=scanner.next();
+        }
+        System.out.println("What would you like to do with your message?(Please select an option below)");      
+        System.out.println("1) Send message");
+        System.out.println("2) Delete the message");
+        System.out.println("3) Store the message to send later");
+        
+        String Moption = scanner.nextLine();
+
+            if (Moption.equals("1")) {
+                System.out.println("Message sent successfully!");
+            } else if (Moption.equals("2")) {
+                System.out.println("Press 0 to delete message");
+                System.out.println("Message deleted*.");
+           
+            
+            
+            } else if (Moption.equals("3")) {
+               //json file
+               try (FileWriter writer = new FileWriter("messages.json", true)) {
+            writer.write("{\"MessageID\":\"" + MessageID
+                    + "\",\"HashCode\":\"" + HashCode
+                    + "\",\"Recipient Cellphone number\":\"" +Recipient
+                    + "\",\"Message\":\"" + Message.replace("\"", "\\\"") + "\"}\n");
+            System.out.println("Message stored successfully!");
+        } catch (IOException e) {
+            System.out.println("Could not store message.");
+        }
+                System.out.println("Message stored to send later.");
+            } else {
+                System.out.println("Invalid message option.");
+            }
+        
+        
+        }
+        } else if (option.equals("2")) {
+
+        System.out.println("The show recent messages are coming soon!");
+
+    } else if (option.equals("3")) {
+
+        System.out.println("Thank you for using Quick Chat, see you soon");
+        System.out.println("Application has been closed");
+
+    } else {
+
+        System.out.println("Invalid option. Please try again.");
+
+    }
+}
     }
 }
 
-System.out.println("Application closed.");
-
-*/
-        
         
         
         
@@ -397,7 +340,7 @@ System.out.println("Application closed.");
     
     
     
-    }
+    
     
     
     
@@ -405,7 +348,7 @@ System.out.println("Application closed.");
     
     
         
-    }
+    
 
 
 
