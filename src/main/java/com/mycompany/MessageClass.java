@@ -18,7 +18,7 @@ public class MessageClass {
     public  String Recipient;
     public Integer numOfmsg;
     
-        static ArrayList<String> sentMessages = new ArrayList<>();
+      public  static ArrayList<String> sentMessages = new ArrayList<>();
 
   public MessageClass(String MessageID, String HashCode,
             String Message, String Recipient, Integer numOfmsg) {
@@ -36,7 +36,7 @@ public class MessageClass {
   
   public String checkRecipientCell(){
   
-      if (Recipient.contains("+27")||Recipient.length()<13) {
+      if (Recipient.contains("+27")&&Recipient.length()<13) {
         return "Recipient's cellphone number has been captured";  
       }
       return "Recipient cellphone number is invalid*";
@@ -59,11 +59,11 @@ public class MessageClass {
   }
 
      public String SentMessage(String Moption){
-         if (Moption=="1") {
+         if (Moption.equals("1")) {
           return "Send message";
-         }else if(Moption=="2"){
+         }else if(Moption.equals("2")){
          return "Press 0 to delete message";
-         }else if(Moption=="3"){
+         }else if(Moption.equals("3")){
          return "Store message for later";
          }
               return "Invalid input. Please select an option";
