@@ -8,7 +8,7 @@ import java.util.Random;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.sound.sampled.ReverbType;
-
+///diff
 /**
  *
  * @author USER
@@ -202,7 +202,7 @@ while (!option.equals("3")) {
     option = scanner.nextLine(); // Get the user's choice
 
     if (option.equals("1")) {
-        
+        System.out.println("Send messages has been selected");
         // message id declartion
         String MessageID = "";
 
