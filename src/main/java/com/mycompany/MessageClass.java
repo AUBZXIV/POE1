@@ -10,6 +10,7 @@ import java.util.ArrayList;
  *
  * @author USER
  */
+
 public class MessageClass {
   
     public String MessageID;
@@ -18,7 +19,11 @@ public class MessageClass {
     public  String Recipient;
     public Integer numOfmsg;
     
-      public  static ArrayList<String> sentMessages = new ArrayList<>();
+    // Arrays to maintain state for reporting and tracking
+    public static ArrayList<String> sentMessagesArr = new ArrayList<>();
+    public static ArrayList<String> messageHashArr = new ArrayList<>();
+    public static ArrayList<String> messageIdArr = new ArrayList<>();
+    public static ArrayList<String> recipientArr = new ArrayList<>();
 
   public MessageClass(String MessageID, String HashCode,
             String Message, String Recipient, Integer numOfmsg) {
@@ -28,62 +33,110 @@ public class MessageClass {
         this.Message = Message;
         this.Recipient = Recipient;
         this.numOfmsg = numOfmsg;
-    }  
+    } 
+  
+  // Ensures that the message ID is not more than 10 characters
   public boolean checkMessageID(){
- return MessageID.length()<=10;
+ if (MessageID == null) return false;
+        return MessageID.length() <= 10;
   
   }
+ 
   
+  // Ensures recipient cell number starts with international code and matches format rules
   public String checkRecipientCell(){
   
-      if (Recipient.contains("+27")&&Recipient.length()<13) {
-        return "Recipient's cellphone number has been captured";  
-      }
-      return "Recipient cellphone number is invalid*";
+     String regex = "^\\+27[0-9]{9}$";
+        if (Recipient != null && Recipient.matches(regex)) {
+            return "Cell phone number successfully captured.";
+        }
+        return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
   }
   
-  public String createMessageHash(){
-   String[] words = Message.trim().split("\\s+");
-
-        String firstWord = words.length > 0 ? words[0] : "";
-        String lastWord = words.length > 0
-                ? words[words.length - 1] : "";
-
-        HashCode = (MessageID+ ":0:"
-                + firstWord + lastWord).toUpperCase();
-
-        return HashCode;
-      
-      
   
-  }
+ // Checks if message is under 250 characters, returns appropriate status string 
+  public String checkMessageLength() {
+    if (Message == null) {
+        return "Message cannot be empty.";
+    }
 
-     public String SentMessage(String Moption){
-         if (Moption.equals("1")) {
-          return "Send message";
-         }else if(Moption.equals("2")){
-         return "Press 0 to delete message";
-         }else if(Moption.equals("3")){
-         return "Store message for later";
-         }
-              return "Invalid input. Please select an option";
-}   
+    if (Message.length() > 250) {
+        int over = Message.length() - 250;
+        return "Message exceeds 250 characters by " + over
+                + "; please reduce the size.";
+    }
+
+    return "Message ready to send.";
+}
+  
+  
+// Creates and returns the Message Hash (e.g., 00:0:HITONIGHT) 
+public String createMessageHash() {
+
+    if (MessageID == null || Message == null) {
+        return "";
+    }
+
+    if (MessageID.length() < 2) {
+        return "";
+    }
+
+    String first2 = MessageID.substring(0, 2);
+
+    String[] words = Message.trim().split(" ");
+
+    String firstWord = words[0].toUpperCase();
+    String lastWord = words[words.length - 1].toUpperCase();
+
+    HashCode = first2 + ":" + numOfmsg + ":" + firstWord + lastWord;
+
+    return HashCode;
+}
+
+
+     // Handles user selection for sending, disregarding, or storing messages
+    public String SentMessage(String Moption) {
+        if (Moption.equals("1")) {
+            sentMessagesArr.add(Message);
+            messageHashArr.add(HashCode);
+            messageIdArr.add(MessageID);
+            recipientArr.add(Recipient);
+            return "Message successfully sent.";
+        } else if (Moption.equals("2")) {
+            return "Press 0 to delete the message.";
+        } else if (Moption.equals("3")) {
+            storeMessage();
+            return "Message successfully stored.";
+        }
+        return "Invalid input. Please select an option";
+    } 
 
   
-     public String printMessage(){
-        return String.join("\n", sentMessages);
-         
-     }
+    // Prints all sent messages formatted cleanly
+    public String printMessage() {
+        if (sentMessagesArr.isEmpty()) {
+            return "No messages sent yet.";
+        }
+        String result = "";
+        for (int i = 0; i < sentMessagesArr.size(); i++) {
+            result += "Hash: " + messageHashArr.get(i) 
+                    + " | To: " + recipientArr.get(i) 
+                    + " | Message: " + sentMessagesArr.get(i) + "\n";
+        }
+        return result;
+    }
   
-  public Integer returnTotalMessages(){
-  return sentMessages.size();
-      
-  }   
- public void storeMessage(){
-  try (FileWriter writer = new FileWriter("messages.json", true)) {
+  // Returns the total number of sent messages
+    public Integer returnTotalMessages() {
+        return sentMessagesArr.size();
+    }
+  
+// Stores message details into a JSON file format
+    public void storeMessage() {
+        try (FileWriter writer = new FileWriter("messages.json", true)) {
             writer.write("{\"MessageID\":\"" + MessageID
                     + "\",\"HashCode\":\"" + HashCode
-                    + "\",\"Recipient Cellphone number\":\"" +Recipient
+                    + "\",\"Recipient Cellphone number\":\"" + Recipient
                     + "\",\"Message\":\"" + Message.replace("\"", "\\\"") + "\"}\n");
             System.out.println("Message stored successfully!");
         } catch (IOException e) {
