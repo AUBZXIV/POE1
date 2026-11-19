@@ -178,55 +178,20 @@ public String createMessageHash() {
         System.out.println("Longest message: " + longestmsg);
     }
     // option c
-    
-    
-    
- } 
- /*
-// a) displays recipient and message for all stored messages
-    static void displayStoredRecipients() {
-       if (storedMessagesArr.isEmpty()) {
-            System.out.println("No stored messages.");
-            return;
-        }
-        for (int i = 0; i < storedMessagesArr.size(); i++) {
-            System.out.println("Recipient: " + recipientArr.get(i)
-                             + " | Message: " + storedMessagesArr.get(i));
-        }
-       
-    }
-
-    // b) finds and displays the longest message in the array
-    static void displayLongestMessage() {
-       if (sentMessagesArr.isEmpty()) {
-            System.out.println("No messages.");
-            return;
-        }
-        String longest = sentMessagesArr.get(0);
-        for (int i = 1; i < sentMessagesArr.size(); i++) {
-            if (sentMessagesArr.get(i).length() > longest.length()) {
-                longest = sentMessagesArr.get(i);
-            }
-        }
-        System.out.println("Longest message: " + longest);
-    }
-
-    // c) searches for a message using its ID and displays it
-    static void searchById(String searchId) {
-       boolean found = false;
+    static void searchByID(String searchId) {
+       boolean foundit = false;
         for (int i = 0; i < messageIdArr.size(); i++) {
             if (messageIdArr.get(i).equals(searchId)) {
                 System.out.println("Recipient: " + recipientArr.get(i));
                 System.out.println("Message: " + sentMessagesArr.get(i));
-                found = true;
+                foundit = true;
             }
         }
-        if (!found) {
-            System.out.println("No message found with that ID.");
+        if (!foundit) {
+            System.out.println("No messages have been found with that ID*.");
         }
     }
-
-    // d) finds all messages sent to a specific recipient
+    // option d
     static void searchByRecipient(String searchRecipient) {
        boolean found = false;
         for (int i = 0; i < messageIdArr.size(); i++) {
@@ -240,57 +205,43 @@ public String createMessageHash() {
             System.out.println("No message found with that ID.");
         }
     }
-
-    // e) deletes a message from the array using its hash
-    static void deleteByHash(String searchHash) {
-      boolean found = false;
+   // option e
+  static void deleteByHash(String searchHash) {
+      boolean founditt = false;
         for (int i = 0; i < messageHashArr.size(); i++) {
             if (messageHashArr.get(i).equals(searchHash)) {
                 System.out.println("Message: \"" + sentMessagesArr.get(i)
-                                 + "\" successfully deleted.");
+                                 + "\" The has successfully deleted.");
                 sentMessagesArr.remove(i);
                 messageHashArr.remove(i);
                 messageIdArr.remove(i);
                 recipientArr.remove(i);
-                found = true;
+                founditt = true;
                 break;
             }
         }
-        if (!found) {
-            System.out.println("No message found with that hash.");
+        if (!founditt) {
+            System.out.println("No message has been found with that hash.");
         }
-    }
-
-    // f) prints a full report of all messages with hash, recipient and message
-    static void displayReport() {
+    }  
+    
+  // option f
+static void displayReport() {
         if (sentMessagesArr.isEmpty()) {
             System.out.println("No messages to report.");
             return;
         }
-        System.out.println("\n--- FULL REPORT ---");
+        System.out.println("\n--- Full Message Report ---");
         for (int i = 0; i < sentMessagesArr.size(); i++) {
             System.out.println("Message Hash: " + messageHashArr.get(i));
             System.out.println("Recipient:    " + recipientArr.get(i));
             System.out.println("Message:      " + sentMessagesArr.get(i));
             System.out.println("-------------------");
         }
-    }
-}
-*/
- 
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    }  
+  
+ } 
+      
         
         
         
