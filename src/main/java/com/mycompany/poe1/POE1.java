@@ -198,22 +198,20 @@ while (!option.equals("3")) {
     System.out.println("1) Send messages");
     System.out.println("2) Show recent messages");
     System.out.println("3) Quit application");
+    System.out.println("Stored messages");
 
     option = scanner.nextLine(); // Get the user's choice
 
     if (option.equals("1")) {
-        System.out.println("Send messages has been selected");
-        // message id declartion
+        //declarations
         String MessageID = "";
-
             for (int j = 0; j < 10; j++) {
                 MessageID += random.nextInt(10);
             }
-
-        
-    String Message=scanner.nextLine();        
+            
+            // hash code declaration
+            String Message=scanner.nextLine();        
       Integer   numOfmsg=scanner.nextInt();    
-      // hash code declaration
             String first2=MessageID.substring(0, 2);
 String colon=":";
 String FirstWord = Message.substring(0, Message.indexOf(" "));
@@ -221,13 +219,7 @@ String LastWord = Message.substring(Message.lastIndexOf(" ") + 1);
 String HashCode = first2.concat(colon).concat(String.valueOf(numOfmsg)).concat(colon).concat(FirstWord).concat(LastWord);
 HashCode=HashCode.toUpperCase();  
             
-            
-            
-            
-            
-            
-            
-
+  ///////////////////////////////////  /////////   
         System.out.println("Send messages have been selected");
         System.out.println("Press Ok to continue");
         answer=scanner.next();
@@ -237,12 +229,9 @@ System.out.println("How many messages do you want to send?");
         numOfmsg = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < numOfmsg; i++) { // for loop use with the messages and the no of messages the user wants to enter
           numOfmsg++;  
-    
-
-        
-        
         System.out.println("Press OK to continue");// used to get to the next process
         answer=scanner.next();
+        
         // recipient  
         System.out.println("Please enter recipient's cellphone number");
             String Recipient = scanner.nextLine();
@@ -255,10 +244,10 @@ System.out.println("How many messages do you want to send?");
             }
 
             System.out.println("Recipient's number entered");
-            
         System.out.println("Press ok to continue");
         answer=scanner.next();
        
+        // User enters the message below
         System.out.println("Please enter your message");
         System.out.println("----------TYPE BELOW----------:");
         Message = scanner.nextLine();
@@ -281,8 +270,9 @@ System.out.println("How many messages do you want to send?");
                 System.out.println("Message deleted*.");
            
             
-            
+            // storing messages
             } else if (Moption.equals("3")) {
+                System.out.println("You have selected to store the message");
                //json file
                try (FileWriter writer = new FileWriter("messages.json", true)) {
             writer.write("{\"MessageID\":\"" + MessageID
@@ -309,14 +299,44 @@ System.out.println("How many messages do you want to send?");
         System.out.println("Thank you for using Quick Chat, see you soon");
         System.out.println("Application has been closed");
 
-    } else {
-
-        System.out.println("Invalid option. Please try again.");
+    } else if(option.equals("4")){
+        String fouthoption=scanner.next();
+        System.out.println("Stored messages has been selected");
+        System.out.println("Please select an option below:");
+        
+         System.out.println("\na) Display stored message recipients");
+                System.out.println("b) Display longest message");
+                System.out.println("c) Search by message ID");
+                System.out.println("d) Search by recipient");
+                System.out.println("e) Delete message by hash");
+                System.out.println("f) Display full report");
+                
+                if (fouthoption.equals("a")) {    ///<<<<<<<<<<<<<<<<<<<< LOOK HERE  
+            // display stored messages
+        }else if (fouthoption.equals("b")){
+        // serach message ID
+        }else if(fouthoption.equals("c")){
+        // search by recipeint
+        } else if(fouthoption.equals("e")){
+            // delete message by hash
+        
+        }else if(fouthoption.equals("f")){
+        // display full report
+        }
+                
+                
+      
+    }else{ 
+  System.out.println("Invalid option. Please try again.");
+        System.out.println("Please enter either: 1, 2, 3, 4");
+  
+  
+    }
 
     }
 }
     }
-}
+
 
         
         
