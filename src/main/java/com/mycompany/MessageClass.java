@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 /**
  *
- * @author USER
+ * @author aubrey chisembele
  */
 
 public class MessageClass {
@@ -24,7 +24,12 @@ public class MessageClass {
     public static ArrayList<String> messageHashArr = new ArrayList<>();
     public static ArrayList<String> messageIdArr = new ArrayList<>();
     public static ArrayList<String> recipientArr = new ArrayList<>();
+    public static ArrayList<String> storeMessageArr = new ArrayList<>();
+     public static ArrayList<String> deleteMessageArr = new ArrayList<>();
 
+
+
+    
   public MessageClass(String MessageID, String HashCode,
             String Message, String Recipient, Integer numOfmsg) {
 
@@ -143,8 +148,135 @@ public String createMessageHash() {
             System.out.println("Could not store message.");
         }
     }
+    
+    // POE PART 3 code below
+    // Option a
+   static void displayStoredRecipients() {
+       if (storeMessageArr.isEmpty()) {
+            System.out.println("No message has been stored.");
+            return;
+        }
+        for (int i = 0; i <storeMessageArr.size(); i++) {
+            System.out.println("Recipient: " + recipientArr.get(i)
+                             + " | Message: " + storeMessageArr.get(i));
+        }
+       
+    } 
+    
+   // option b dissplaying longest message
+    static void displayLongestMessage() {
+       if (sentMessagesArr.isEmpty()) {
+            System.out.println("No message has been found.");
+            return;
+        }
+        String longestmsg = sentMessagesArr.get(0);
+        for (int i = 1; i < sentMessagesArr.size(); i++) {
+            if (sentMessagesArr.get(i).length() > longestmsg.length()) {
+                longestmsg = sentMessagesArr.get(i);
+            }
+        }
+        System.out.println("Longest message: " + longestmsg);
+    }
+    // option c
+    
+    
+    
  } 
- 
+ /*
+// a) displays recipient and message for all stored messages
+    static void displayStoredRecipients() {
+       if (storedMessagesArr.isEmpty()) {
+            System.out.println("No stored messages.");
+            return;
+        }
+        for (int i = 0; i < storedMessagesArr.size(); i++) {
+            System.out.println("Recipient: " + recipientArr.get(i)
+                             + " | Message: " + storedMessagesArr.get(i));
+        }
+       
+    }
+
+    // b) finds and displays the longest message in the array
+    static void displayLongestMessage() {
+       if (sentMessagesArr.isEmpty()) {
+            System.out.println("No messages.");
+            return;
+        }
+        String longest = sentMessagesArr.get(0);
+        for (int i = 1; i < sentMessagesArr.size(); i++) {
+            if (sentMessagesArr.get(i).length() > longest.length()) {
+                longest = sentMessagesArr.get(i);
+            }
+        }
+        System.out.println("Longest message: " + longest);
+    }
+
+    // c) searches for a message using its ID and displays it
+    static void searchById(String searchId) {
+       boolean found = false;
+        for (int i = 0; i < messageIdArr.size(); i++) {
+            if (messageIdArr.get(i).equals(searchId)) {
+                System.out.println("Recipient: " + recipientArr.get(i));
+                System.out.println("Message: " + sentMessagesArr.get(i));
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No message found with that ID.");
+        }
+    }
+
+    // d) finds all messages sent to a specific recipient
+    static void searchByRecipient(String searchRecipient) {
+       boolean found = false;
+        for (int i = 0; i < messageIdArr.size(); i++) {
+            if (messageIdArr.get(i).equals(searchRecipient)) {
+                System.out.println("Recipient: " + recipientArr.get(i));
+                System.out.println("Message: " + sentMessagesArr.get(i));
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No message found with that ID.");
+        }
+    }
+
+    // e) deletes a message from the array using its hash
+    static void deleteByHash(String searchHash) {
+      boolean found = false;
+        for (int i = 0; i < messageHashArr.size(); i++) {
+            if (messageHashArr.get(i).equals(searchHash)) {
+                System.out.println("Message: \"" + sentMessagesArr.get(i)
+                                 + "\" successfully deleted.");
+                sentMessagesArr.remove(i);
+                messageHashArr.remove(i);
+                messageIdArr.remove(i);
+                recipientArr.remove(i);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No message found with that hash.");
+        }
+    }
+
+    // f) prints a full report of all messages with hash, recipient and message
+    static void displayReport() {
+        if (sentMessagesArr.isEmpty()) {
+            System.out.println("No messages to report.");
+            return;
+        }
+        System.out.println("\n--- FULL REPORT ---");
+        for (int i = 0; i < sentMessagesArr.size(); i++) {
+            System.out.println("Message Hash: " + messageHashArr.get(i));
+            System.out.println("Recipient:    " + recipientArr.get(i));
+            System.out.println("Message:      " + sentMessagesArr.get(i));
+            System.out.println("-------------------");
+        }
+    }
+}
+*/
  
        
         
